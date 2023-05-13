@@ -33,5 +33,7 @@ module Taypi
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    require "sprockets/railtie"
   end
 end
