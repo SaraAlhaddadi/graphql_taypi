@@ -12,6 +12,11 @@ module Types
 
     field :full_name, String
 
+    # `posted_by` is automatically camelcased as `postedBy`
+    # field can be nil, because we added users relationship later
+    # "method" option remaps field to an attribute of model
+    field :posted_by, UserType, null: true, method: :user
+
     # 
     def full_name
       [object.first_name, object.last_name].compact.join('')

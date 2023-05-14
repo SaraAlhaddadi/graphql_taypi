@@ -15,7 +15,7 @@ class Mutations::CreateArtist < Mutations::BaseMutation
 
   # how the createArtist(input: CreateArtistInput!): CreateArtistPayload defined ?
   def resolve(first_name:, last_name:, email:)
-    artist = Artist.new(first_name: first_name, last_name: last_name, email: email)
+    artist = Artist.new(first_name: first_name, last_name: last_name, email: email, user: context[:current_user])
 
     if artist.save
       { artist: artist, errors: [] }
